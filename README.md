@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Subscription QR Code App
 
-## Getting Started
+🚀 Live Demo: [QR Code Generator](https://qr-code-nine-beryl.vercel.app/)
 
-First, run the development server:
+## 📌 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The **Subscription QR Code App** allows users to enter their phone number and generate a **unique QR code** containing both the number and a randomly generated verification code. When scanned, the QR code reveals this information, making it useful for authentication and user verification purposes.
+
+## 🛠 Technology Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS, Shadcn/ui
+- **Components:** Lucide-react icons, QR Code Generator
+- **Deployment:** Vercel
+
+## 🚀 Features
+
+- 📱 **Phone Number Input**: Users can enter their phone number.
+- ✅ **Validation**: Ensures the number is in a valid international format.
+- 🔄 **Unique Verification Code**: Generates a 6-digit random code.
+- 📸 **QR Code Generation**: Creates a QR code with phone number + verification code.
+- 🎨 **Fully Responsive**: Optimized for all screen sizes using Tailwind CSS.
+- 🚀 **Live Hosting on Vercel**.
+
+## 🛠 Installation & Setup
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+4. Open in browser:
+   ```
+   http://localhost:3000/
+   ```
+
+## 📸 Scanning QR Code
+
+When scanned, the QR code will contain a JSON object:
+
+```json
+{
+  "phone": "+123456789",
+  "code": "123456"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment on Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This project is deployed live on **Vercel**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Live URL**: [QR Code Generator](https://qr-code-nine-beryl.vercel.app/)
 
-## Learn More
+To deploy manually, run:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```sh
+vercel --prod
+```
