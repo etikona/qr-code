@@ -1,10 +1,10 @@
+import SubscriptionForm from "@/components/qrForm";
 import React from "react";
-import qrForm from "./components/qrForm";
 
 const page = () => {
   return (
     <div>
-      <qrForm />
+      <SubscriptionForm />
     </div>
   );
 };

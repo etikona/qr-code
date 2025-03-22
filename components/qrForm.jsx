@@ -7,21 +7,28 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import QRCode from "qrcode.react";
 
-export default function qrForm() {
+export default function SubscriptionForm() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [qrCode, setQrCode] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
 
   const validatePhone = (number) => {
-    const phoneRegex = /^\+?[1-9]\d{1,14}$/; // International format validation
+    const phoneRegex = /^\+?[1-9]\d{1,14}$/;
     return phoneRegex.test(number);
   };
 
   useEffect(() => {
     if (phone) {
+      // * 6-digit random code
+      const code = Math.floor(100000 + Math.random() * 900000);
+      setVerificationCode(code);
+      const qrData = JSON.stringify({ phone, code });
       setQrCode(
-        `https://api.qrserver.com/v1/create-qr-code/?data=${phone}&size=150x150`
+        `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
+          qrData
+        )}&size=150x150`
       );
     }
   }, [phone]);
@@ -43,7 +50,6 @@ export default function qrForm() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h2>Hello From Subscription Form</h2>
       <Card className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg">
         <CardContent>
           <h2 className="text-xl font-bold text-center mb-4">
@@ -63,8 +69,11 @@ export default function qrForm() {
             </Button>
           </form>
           {qrCode && (
-            <div className="mt-4 flex justify-center">
+            <div className="mt-4 flex flex-col items-center">
               <img src={qrCode} alt="QR Code" className="w-32 h-32" />
+              <p className="text-gray-500 text-sm mt-2">
+                Scan to get verification code
+              </p>
             </div>
           )}
         </CardContent>
